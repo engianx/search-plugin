@@ -169,7 +169,7 @@ function SearchDialog({ domain }: SearchDialogProps) {
     setCurrentSlide(0);
 
     try {
-      const searchUrl = `/search/${domain}?query=${encodeURIComponent(query)}`;
+      const searchUrl = `${window.location.origin}/search/${domain}?query=${encodeURIComponent(query)}`;
       const response = await fetch(searchUrl);
       if (!response.ok) {
         throw new Error('Search request failed');
