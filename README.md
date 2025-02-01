@@ -103,6 +103,12 @@ Then, open your browser at http://localhost:5173. Visit a demo URL, for example:
 `http://localhost:5173/demo/dodoutdoors.com`
 to see the demo with the embedded proxy.
 
+If you are running your api server non-locally, specify the address using the
+environment variable:
+```bash
+VITE_API_URL=https://api.yoursite.com npm run dev
+```
+
 ## Configuration
 Edit `config/default.yaml` to customize settings such as:
 - Crawler settings
