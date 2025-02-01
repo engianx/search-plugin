@@ -1,7 +1,7 @@
 # Default configuration for all domains
 
 mongodb:
-  uri: "mongodb://localhost:27017"  # Will be overridden by domain config
+  uri: "mongodb://localhost:27017"
   test_uri: "mongodb://localhost:27017"
   database: "webscraper"
 

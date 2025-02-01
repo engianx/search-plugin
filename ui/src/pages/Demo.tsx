@@ -10,7 +10,7 @@ function Demo() {
     return <Navigate to="/" replace />;
   }
 
-  const proxyUrl = `http://localhost:8080/proxy?url=${encodeURIComponent(`https://${domain}`)}`;
+  const proxyUrl = `/proxy?url=${encodeURIComponent(`https://${domain}`)}`;
 
   return (
     <div className="h-screen w-screen">
