@@ -106,7 +106,7 @@ to see the demo with the embedded proxy.
 If you are running your api server non-locally, specify the address using the
 environment variable:
 ```bash
-VITE_API_URL=https://api.yoursite.com npm run dev
+VITE_API_URL=https://api.yoursite.com npm run dev -- --host 0.0.0.0
 ```
 
 ## Configuration
