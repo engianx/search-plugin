@@ -1,6 +1,7 @@
 import { useParams, Navigate } from 'react-router-dom';
 import SearchDialog from '../components/SearchDialog';
 import { useState } from 'react';
+import { config } from '../config';
 
 function Demo() {
   const { domain } = useParams<{ domain: string }>();
@@ -10,7 +11,7 @@ function Demo() {
     return <Navigate to="/" replace />;
   }
 
-  const proxyUrl = `${window.location.origin}/proxy?url=${encodeURIComponent(`https://${domain}`)}`;
+  const proxyUrl = `${config.apiUrl}/proxy?url=${encodeURIComponent(`https://${domain}`)}`;
 
   return (
     <div className="h-screen w-screen">

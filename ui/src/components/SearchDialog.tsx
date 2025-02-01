@@ -3,6 +3,7 @@ import { Search, Send, Loader2, ChevronLeft, ChevronRight, X } from 'lucide-reac
 import ReactMarkdown from 'react-markdown';
 import { SearchInput } from './SearchInput';
 import { SearchResults, SearchResult } from './SearchResults';
+import { config } from '../config';
 
 interface Product {
   url: string;
@@ -169,7 +170,7 @@ function SearchDialog({ domain }: SearchDialogProps) {
     setCurrentSlide(0);
 
     try {
-      const searchUrl = `${window.location.origin}/search/${domain}?query=${encodeURIComponent(query)}`;
+      const searchUrl = `${config.apiUrl}/search/${domain}?query=${encodeURIComponent(query)}`;
       const response = await fetch(searchUrl);
       if (!response.ok) {
         throw new Error('Search request failed');
