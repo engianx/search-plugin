@@ -37,12 +37,14 @@ pip3 install -r requirements.txt
 
 ## Setup
 The system requires:
-1. mongodb: the simplest way to get it is to pull a pre-built docker image.
-MongoDB is used for cache LLM calls, such as embedding and offline document process.
+1. mongodb: for caching embeddings and llm calls.
+2. elasticsearch: for vecter index and search.
 
-2. elasticsearch: use docker image is also the easiest way.
-ElasticSearch is used to build the search index, we use the dense vector
-for semantic search.
+These services can be installed on your local machine using the following
+command line (see docker-compose.yml for details).
+```bash
+docker-compose up -d
+```
 
 Update `config/default.yaml` if they are running on different servers:
 ```yaml
@@ -74,12 +76,12 @@ python3 -m search.cli pages https://dodoutdoors.com $HOME/data
 python3 -m search.cli process https://dodoutdoors.com $HOME/data --workers 4
 # Step 3.2: Extract product data
 python3 -m search.cli products https://dodoutdoors.com $HOME/data
-# Step 3.3: Generate Q&A from pages
+# (Optional) Step 3.3: Generate Q&A from pages
 python3 -m search.cli qa https://dodoutdoors.com $HOME/data
 
 # Step 4.1: Build the index
 python3 -m search.cli index https://dodoutdoors.com $HOME/data
-# Step 4.2: Index Q&A data
+# (Optional) Step 4.2: Index Q&A data
 python3 -m search.cli index-qa https://dodoutdoors.com $HOME/data
 ```
 
