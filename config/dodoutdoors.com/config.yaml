@@ -1,0 +1,32 @@
+# Domain-specific configuration
+
+# sitemap_follow is used to control what sitemap urls to follow.
+# by setting it to the pattern like <domain>/sitemap*, it filters
+# out others like <domain>/es/sitemap*, so we only need to crawl
+# pages of the default languages.
+# Scrapy sets the default to [""] which matches everythong.
+# To add a new pattern, just add a new entry in "sitemap_follow".
+sitemap_follow:
+  - 'https://dodoutdoors.com/sitemap*'
+  # - 'https://dodoutdoors.com/es/sitemap*'
+
+ranking:
+  product_boost: 1.1  # Boost product scores by 20%
+
+product_processor:
+  system_prompt: |
+    You are a product specification extractor. Extract the following information from the HTML content:
+    - name: Product name
+    - price: Product price (numeric only)
+    - description: Short product description
+    - specifications: List of technical specifications
+    - features: List of key features to highlight
+    - images: List of unique image URLs, if the url missing protocol, add https://
+
+    Format the response as a JSON object with these exact fields.
+    If a field is not found, use null or an empty list as appropriate.
+
+document_processor:
+  # If you want to generate Q&A pairs for all documents, set qa_url_patterns to empty list.
+  qa_url_patterns:
+    - "/pages/.*"

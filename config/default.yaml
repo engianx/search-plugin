@@ -1,0 +1,29 @@
+# Default configuration for all domains
+
+mongodb:
+  uri: "mongodb://localhost:27017"  # Will be overridden by domain config
+  test_uri: "mongodb://localhost:27017"
+  database: "webscraper"
+
+elasticsearch:
+  uri: "http://localhost:9200"
+  test_uri: "http://localhost:9200"
+  chunk_size: 512  # maximum tokens per chunk
+  max_retries: 3   # max retries for indexing failures
+  timeout: 30      # seconds
+
+# Data directory for all scraped content
+data_dir: "${HOME}/data"  # Will be expanded using environment variable
+
+# Other configurations...
+
+indexer:
+  batch_size: 10   # number of documents to process in parallel
+  sentence_splitters: [". ", "? ", "! ", ".\n", "?\n", "!\n"]
+
+api:
+  host: "0.0.0.0"
+  port: 8080  # Changed from default 8000
+  workers: 4  # Number of uvicorn workers
+  search:
+    max_products: 5  # Number of top products to return

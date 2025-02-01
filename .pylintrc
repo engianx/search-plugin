@@ -1,0 +1,9 @@
+[MESSAGES CONTROL]
+disable=
+    logging-fstring-interpolation,
+    keyword-arg-before-vararg,
+    unspecified-encoding,
+    broad-exception-caught
+    missing-class-docstring
+    arguments-renamed
+    unnecessary-pass
