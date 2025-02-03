@@ -15,7 +15,7 @@ from .proxy import proxy_request
 
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Webscraper Search API")
+app = FastAPI(title="Semantic Search API")
 
 # Configure CORS with sensible defaults
 app.add_middleware(

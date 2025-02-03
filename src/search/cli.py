@@ -92,7 +92,7 @@ def get_data_dir():
 
 @click.group()
 def cli():
-    """Website scraper CLI with individual step commands."""
+    """Semantic search plugin CLI with individual step commands."""
     pass
 
 @cli.command()

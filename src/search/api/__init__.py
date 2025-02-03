@@ -1,1 +1,1 @@
-"""Webscraper API package."""
+"""Semantic-search-plugin API package."""

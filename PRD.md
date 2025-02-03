@@ -1,11 +1,13 @@
-# Website Scraper Project Requirements
+# Semantic Search Plugin Project Requirements
 
 ## Overview
-A website scraper that extracts and processes content from websites, handling both product pages and general content pages. The system consists of three main components: sitemap crawler, page crawler, and content processor.
+A semantic search plugin that enables natural language search capabilities for e-commerce websites. The system consists of four main components: sitemap crawler, page crawler, content processor, and a user interface with API server.
 
 ## Components
 
-### 1. Sitemap Crawler
+### 1. Backend Components (@search)
+
+#### 1.1 Sitemap Crawler
 - **Input**:
   - Website URL
   - Data directory path
@@ -25,7 +27,7 @@ A website scraper that extracts and processes content from websites, handling bo
   - Error messages (if any)
   - Local file path (for crawled content)
 
-### 2. Page Crawler
+#### 1.2 Page Crawler
 - **Configuration** (YAML file with CLI override support):
   - Request timeout
   - Delay between requests (rate limiting)
@@ -45,7 +47,7 @@ A website scraper that extracts and processes content from websites, handling bo
   - Raw HTML content saved in 'html' subdirectory
   - Updated metadata JSON with crawl status
 
-### 3. Content Processor
+#### 1.3 Content Processor
 - **Product Pages** (URLs starting with '/products/'):
   - Use provided JSON schema (fixed per website)
   - Extract structured data using LLM
@@ -61,50 +63,48 @@ A website scraper that extracts and processes content from websites, handling bo
     * Clean content (headers/footers removed)
   - Save in 'documents' subdirectory
 
+### 2. Frontend Components (@ui)
+- **Search Dialog**:
+  - Floating search button
+  - Expandable search input
+  - Results display with product cards
+  - Image carousel for product images
+  - Answer section for non-product queries
+
+- **Demo Page**:
+  - Website preview iframe
+  - Integrated search dialog
+  - Domain-specific routing
+
+### 3. API Server (@api)
+- **Search Endpoint**:
+  - Natural language query processing
+  - Product and content search
+  - Relevance ranking
+  - Response formatting
+
+- **Proxy Endpoint**:
+  - Website preview functionality
+  - Security header handling
+  - CORS support
+
 ## Directory Structure
-data/
-├── metadata.json # URL metadata
-├── html/ # Raw HTML files
-├── products/ # Processed product JSONs
-└── documents/ # Processed document JSONs
 
-## Technical Requirements
-- Support for multiple LLM providers
-- YAML configuration with command-line override support
-- Error handling and logging
-- Default to OpenAI's GPT-4-turbo model for LLM processing
-
-
-Here's a proposed source file structure for the entire project:
-
-website_scraper/
-├── README.md
-├── requirements.txt
-├── setup.py
-├── config/
-│   └── default.yaml       # Default configuration
-├── src/
-│   └── search/
-│       ├── __init__.py
-│       ├── cli.py         # Command line interface
-│       ├── sitemap/
-│       │   ├── __init__.py
-│       │   └── crawler.py # Our sitemap crawler implementation
-│       ├── page/
-│       │   ├── __init__.py
-│       │   └── crawler.py # Page crawler with proxy support
-│       ├── processor/
-│       │   ├── __init__.py
-│       │   ├── base.py    # Base processor
-│       │   ├── product.py # Product page processor
-│       │   └── document.py# Document page processor
-│       └── utils/
-│           ├── __init__.py
-│           ├── config.py  # Configuration handling
-│           └── storage.py # File storage utilities
-└── tests/
-    └── search/
-        ├── __init__.py
-        ├── sitemap/
-        ├── page/
-        └── processor/
+project/
+├── search/ # Backend crawler and processor
+│ ├── sitemap/
+│ ├── page/
+│ └── processor/
+├── api/ # API and proxy servers
+│ ├── search/
+│ └── proxy/
+├── ui/ # Frontend components
+│ ├── src/
+│ │ ├── components/
+│ │ └── pages/
+│ └── public/
+└── data/ # Processed data
+├── metadata.json
+├── html/
+├── products/
+└── documents/

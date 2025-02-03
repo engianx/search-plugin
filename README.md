@@ -91,7 +91,7 @@ python3 -m search.cli index-qa https://dodoutdoors.com $HOME/data
 python3 -m search.api.server
 
 # Query the API:
-curl "http://localhost:8080/search/dodoutdoors.com?query=your+search+query"
+curl "http://localhost:8080/search/dodoutdoors.com?query=tents"
 ```
 
 ### Demo UI
